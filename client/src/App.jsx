@@ -11,10 +11,13 @@ import WorkExperience from "./pages/WorkExperience";
 import Contact from "./pages/Contact";
 import Footer from "./components/Footer";
 import ScrollToTop from "react-scroll-to-top";
-import { Link } from "react-scroll";
+import { useSelector } from "react-redux";
+// import { useTheme } from "./context/ThemeContext";
 
 function App() {
   const [toggle, setToggle] = useState(true);
+  const { mode } = useSelector((state) => state.darkMode);
+  // const [theme] = useTheme();
 
   // change toggle
   const handleToggle = () => {
@@ -22,21 +25,23 @@ function App() {
   };
   return (
     <>
-      <Sidebar handleToggle={handleToggle} toggle={toggle} />
+      <div className={`${mode ? "bg-white" : "bg-[#5f264a] text-[#f4eee0]"}`}>
+        <Sidebar handleToggle={handleToggle} toggle={toggle} />
 
-      <div
-        className={`${
-          toggle ? "hidden sm:block sm:ml-56" : " block ml-10 sm:ml-16"
-        } transition-all duration-700 ease-in-out`}
-      >
-        <Home />
-        <About />
-        <Education />
-        <TechStack />
-        <Projects />
-        <WorkExperience />
-        <Contact />
-        <Footer />
+        <div
+          className={`${
+            toggle ? "hidden sm:block sm:ml-56" : " block ml-10 sm:ml-16"
+          } transition-all duration-700 ease-in-out`}
+        >
+          <Home />
+          <About />
+          <Education />
+          <TechStack />
+          <Projects />
+          <WorkExperience />
+          <Contact />
+          <Footer />
+        </div>
       </div>
       <ScrollToTop
         smooth

@@ -4,8 +4,10 @@ import {
   VerticalTimelineElement,
 } from "react-vertical-timeline-component";
 import { SiReact } from "react-icons/si";
+import { useSelector } from "react-redux";
 
 const WorkExperience = () => {
+  const { mode } = useSelector((state) => state.darkMode);
   const experiences = [
     {
       post: "Full Stack Developer",
@@ -34,8 +36,15 @@ const WorkExperience = () => {
   ];
   return (
     <>
-      <div className="px-4 bg-blue-200 my-5" id="work-experience">
-        <h1 className="font-bold text-gray-800 text-center text-2xl pt-5">
+      <div
+        className={`px-4 my-5 ${mode ? "bg-gray-100" : "bg-[#5F304F]"}`}
+        id="work-experience"
+      >
+        <h1
+          className={`font-bold ${
+            mode ? "text-gray-800" : "text-gray-300"
+          } text-center text-2xl pt-5`}
+        >
           Work Experience
         </h1>
         <hr className="w-[400px] my-2 mx-auto" />
